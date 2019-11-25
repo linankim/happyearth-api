@@ -1,0 +1,19 @@
+{
+  "name": "happyearth-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linankim/happyearth-api.git"
+  },
+  "author": "Annika and Lina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linankim/happyearth-api/issues"
+  },
+  "homepage": "https://github.com/linankim/happyearth-api#readme"
+}
