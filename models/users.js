@@ -3,23 +3,23 @@ const mongoose = require('../database')
 const Users = mongoose.model('users', {
 	firstName: {
 		type: String,
-		required: [true, 'name is required']
+		required: [true, 'First name is required']
 	},
 	lastName: {
 		type: String,
-		required: [true, 'name is required']
+		required: [true, 'Last name is required']
 	},
 	residenceCountry: {
 		type: String,
-		required: [true, 'name is required']
+		required: [true, 'Country of Residence is required']
 	},
 	email: {
 		type: String,
-		required: [true, 'name is required']
+		required: [true, 'Email is required']
 	},
 	password: {
 		type: String,
-		required: [true, 'name is required']
+		required: [true, 'Password is required']
 	},
 	avatar: String
 })
