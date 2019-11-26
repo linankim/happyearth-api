@@ -11,8 +11,8 @@ module.exports = (req, res) => {
 				res.send('Token not valid')
 			} else {
 				console.log('auth')
-				res.send({ user })
-				console.log({ user })
+				res.send(user)
+				console.log(user)
 			}
 		})
 		.catch(err => console.log(err))
