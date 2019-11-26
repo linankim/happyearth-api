@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors({ credentials: true }))
 //routes
-app.post('/signup', require('./controllers/signup.js'))
+app.post('/signup', require('./controllers/Signup.js'))
 app.listen(process.env.PORT, () => {
 	console.log(`Ready on port ${process.env.PORT}`)
 })
