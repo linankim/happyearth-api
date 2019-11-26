@@ -1,29 +1,29 @@
 {
-  "name": "happyearth-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/linankim/happyearth-api.git"
-  },
-  "author": "Annika and Lina",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/linankim/happyearth-api/issues"
-  },
-  "homepage": "https://github.com/linankim/happyearth-api#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "js": "^0.1.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.12"
-  }
+	"name": "happyearth-api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/linankim/happyearth-api.git"
+	},
+	"author": "Annika and Lina",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/linankim/happyearth-api/issues"
+	},
+	"homepage": "https://github.com/linankim/happyearth-api#readme",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"js": "^0.1.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.7.12"
+	}
 }

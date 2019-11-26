@@ -11,7 +11,7 @@ const Users = mongoose.model('users', {
 	},
 	residenceCountry: {
 		type: String,
-		required: [true, 'Residence country is required']
+		required: [true, 'Country of Residence is required']
 	},
 	email: {
 		type: String,
@@ -20,7 +20,8 @@ const Users = mongoose.model('users', {
 	password: {
 		type: String,
 		required: [true, 'Password is required']
-	}
+	},
+	avatar: String
 })
 
 module.exports = Users
