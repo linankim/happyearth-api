@@ -14,6 +14,7 @@ app.use(bodyParser.json())
 app.use(cors({ credentials: true }))
 
 //routes
+app.get('/auth', require('./controllers/Auth'))
 app.post('/login', require('./controllers/Login'))
 app.post('/signup', require('./controllers/Signup'))
 
