@@ -7,15 +7,17 @@ module.exports = (req, res) => {
     .select("email password")
     .then(user => {
       if (!user) {
-        res.send("Either email or password is incorrect");
+        res.send("Either email or password is incorrect, not user");
       } else {
-        let match = bcrypt.compareSync(req.body.password, user.password);
-        if (!match) {
-          res.send("Either email or password is incorrect");
-        } else {
-          let token = jwt.sign(user.toObject(), process.env.SECRET);
-          res.send({ token });
-        }
+        // let match = bcrypt.compareSync(req.body.password, user.password);
+        // if (!match) {
+        //   res.send("Either email or password is incorrect");
+        // } else {
+        //   let token = jwt.sign(user.toObject(), process.env.SECRET);
+        //   res.send({ token });
+        // }
+        let token = jwt.sign(user.toObject(), process.env.SECRET);
+        res.send({ token });
       }
     })
     .catch(err => res.send(err));
