@@ -23,3 +23,5 @@ const Users = mongoose.model('users', {
 	},
 	avatar: String
 })
+
+module.exports = Users
