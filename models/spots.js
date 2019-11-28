@@ -2,7 +2,7 @@ const mongoose = require('../database')
 
 const Spots = mongoose.model('spots', {
 	pictures: {
-		type: [Strings],
+		type: [String],
 		required: true
 	},
 	title: {
