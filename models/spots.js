@@ -1,8 +1,8 @@
 const mongoose = require('../database')
 
 const Spots = mongoose.model('spots', {
-	pictures: {
-		type: [Strings],
+	images: {
+		type: [String],
 		required: true
 	},
 	title: {
@@ -11,7 +11,7 @@ const Spots = mongoose.model('spots', {
 	},
 	spotters: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'spotters'
+		ref: 'users'
 	},
 	description: {
 		type: String,
