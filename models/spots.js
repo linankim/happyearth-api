@@ -11,7 +11,7 @@ const Spots = mongoose.model('spots', {
 	},
 	spotters: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'spotters'
+		ref: 'users'
 	},
 	description: {
 		type: String,
