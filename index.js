@@ -17,6 +17,7 @@ app.use(cors({ credentials: true }))
 app.get('/auth', require('./controllers/Auth'))
 app.post('/login', require('./controllers/Login'))
 app.post('/signup', require('./controllers/Signup'))
+app.get('/spot', require('./controllers/getSpot'))
 
 app.listen(process.env.PORT, () => {
 	console.log(`Ready on port ${process.env.PORT}`)
