@@ -13,9 +13,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors({ credentials: true }))
 
-//routes
+//routes get
+app.get('/amenities', require('./controllers/getAmenities'))
 app.get('/auth', require('./controllers/Auth'))
 app.get('/spots', require('./controllers/getSpots'))
+
+//routes post
 app.post('/login', require('./controllers/Login'))
 app.post('/signup', require('./controllers/Signup'))
 app.get('/spots/:id', require('./controllers/getSpot'))
