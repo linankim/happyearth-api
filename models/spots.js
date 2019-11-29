@@ -21,10 +21,12 @@ const Spots = mongoose.model('spots', {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'types'
 	},
-	amenities: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'amenities'
-	},
+	amenities: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'amenities'
+		}
+	],
 	city: {
 		type: String,
 		required: [true, 'City is required.']
