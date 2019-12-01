@@ -4,7 +4,9 @@ const path = require('path')
 const cloudinary = require('cloudinary')
 
 module.exports = (req, res) => {
-	console.log('file', req.file)
+	req.body.center = {}
+	req.body.center.lat = req.body.lat
+	req.body.center.lng = req.body.lng
 	console.log('body', JSON.stringify(req.body, false, 2))
 	if (req.files && req.files.length) {
 		cloudinary.config({
