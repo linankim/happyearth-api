@@ -8,7 +8,8 @@ module.exports = (req, res) => {
 	req.body.center.lat = req.body.lat
 	req.body.center.lng = req.body.lng
 	console.log('body', JSON.stringify(req.body, false, 2))
-	if (req.files && req.files.length) {
+	if (req.file) {
+		console.log('file', req.file)
 		cloudinary.config({
 			cloud_name: process.env.CLOUDNAME,
 			api_key: process.env.APIKEY,
@@ -16,18 +17,23 @@ module.exports = (req, res) => {
 		})
 		const dataUri = new DataUri()
 		let uri = dataUri.format(
-			path.extname(req.files[0].originalname).toString(),
-			req.files[0].buffer
+			path.extname(req.file.originalname).toString(),
+			req.file.buffer
 		).content
+		console.log({ uri })
 		cloudinary.uploader.upload(uri).then(cloudinaryFile => {
+			console.log({ cloudinaryFile })
 			req.body.images = []
 			req.body.images[0] = cloudinaryFile.url
 			Spots.create(req.body)
 				.then(spot => {
-					res.send({ spot })
 					console.log({ spot })
+					res.send({ spot })
 				})
-				.catch(err => res.send(err))
+				.catch(err => {
+					console.log({ err })
+					res.send(err)
+				})
 		})
 	} else {
 		console.log('no file')
