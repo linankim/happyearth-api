@@ -35,13 +35,15 @@ const Spots = mongoose.model('spots', {
 		type: String,
 		required: [true, 'Country is required.']
 	},
-	lng: {
-		type: Number,
-		required: true
-	},
-	lat: {
-		type: Number,
-		required: true
+	center: {
+		lng: {
+			type: Number,
+			required: true
+		},
+		lat: {
+			type: Number,
+			required: true
+		}
 	}
 })
 
