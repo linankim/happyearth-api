@@ -2,11 +2,12 @@ const mongoose = require('../database')
 
 const Types = mongoose.model('types', {
 	name: {
-		type: String
+		type: String,
+		required: [true, 'Name is required.']
 	},
 	icon: {
 		type: String,
-		required: true
+		required: [true, 'Icon string is required.']
 	}
 })
 

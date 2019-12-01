@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 require('dotenv').config()
+const multer = require('multer')
 
 //connect database
 require('./database')
@@ -8,18 +9,25 @@ require('./database')
 //middleware
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const upload = multer({ storage: multer.memoryStorage() })
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors({ credentials: true }))
 
-//routes
+//routes get
+app.get('/amenities', require('./controllers/getAmenities'))
 app.get('/auth', require('./controllers/Auth'))
 app.get('/spots', require('./controllers/getSpots'))
-app.post('/login', require('./controllers/Login'))
-app.post('/signup', require('./controllers/Signup'))
+app.get('/types', require('./controllers/getTypes'))
 app.get('/spots/:id', require('./controllers/getSpot'))
 
+//routes post
+app.post('/login', require('./controllers/Login'))
+app.post('/signup', require('./controllers/Signup'))
+app.post('/spots', upload.single('file'), require('./controllers/postSpots'))
+
+//connect server
 app.listen(process.env.PORT, () => {
 	console.log(`Ready on port ${process.env.PORT}`)
 })
