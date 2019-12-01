@@ -17,7 +17,7 @@ const Spots = mongoose.model('spots', {
 		type: String,
 		required: true
 	},
-	typeOfPlace: {
+	types: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'types'
 	},
