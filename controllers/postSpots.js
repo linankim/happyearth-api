@@ -15,6 +15,7 @@ module.exports = (req, res) => {
 			api_key: process.env.APIKEY,
 			api_secret: process.env.APISECRET
 		})
+		// start loop
 		const dataUri = new DataUri()
 		let uri = dataUri.format(
 			path.extname(req.file.originalname).toString(),
@@ -25,6 +26,8 @@ module.exports = (req, res) => {
 			console.log({ cloudinaryFile })
 			req.body.images = []
 			req.body.images[0] = cloudinaryFile.url
+			// end loop
+
 			Spots.create(req.body)
 				.then(spot => {
 					console.log({ spot })
