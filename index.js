@@ -18,9 +18,10 @@ app.use(cors({ credentials: true }))
 //routes get
 app.get('/amenities', require('./controllers/getAmenities'))
 app.get('/auth', require('./controllers/Auth'))
+app.get('/spots/:id', require('./controllers/getSpot'))
 app.get('/spots', require('./controllers/getSpots'))
 app.get('/types', require('./controllers/getTypes'))
-app.get('/spots/:id', require('./controllers/getSpot'))
+app.get('/users/:id', require('./controllers/getUser'))
 
 //routes post
 app.post('/login', require('./controllers/Login'))
