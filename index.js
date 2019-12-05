@@ -22,6 +22,15 @@ app.get('/spots/:id', require('./controllers/getSpot'))
 app.get('/spots', require('./controllers/getSpots'))
 app.get('/types', require('./controllers/getTypes'))
 app.get('/users/:id', require('./controllers/getUser'))
+app.get('/users', require('./controllers/getUsers'))
+
+//routes patch
+
+app.patch(
+	'/users/:id',
+	upload.single('file'),
+	require('./controllers/patchUser')
+)
 
 //routes post
 app.post('/login', require('./controllers/Login'))
