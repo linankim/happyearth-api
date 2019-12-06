@@ -15,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors({ credentials: true }))
 
+//routes delete
+app.delete('/users/:id', require('./controllers/deleteUser'))
+
 //routes get
 app.get('/amenities', require('./controllers/getAmenities'))
 app.get('/auth', require('./controllers/Auth'))
