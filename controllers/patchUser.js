@@ -27,7 +27,6 @@ module.exports = (req, res) => {
 						req.body.avatar = cloudinaryFile.url
 						console.log('req.body.avatar', req.body.avatar)
 						console.log(data)
-						res.send({ data })
 						Users.findByIdAndUpdate({ _id: req.params.id }, req.body, {
 							new: true
 						})
