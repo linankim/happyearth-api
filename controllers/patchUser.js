@@ -42,7 +42,18 @@ module.exports = (req, res) => {
 					})
 					.catch(err => res.send(err))
 			} else {
-				console.log('not working')
+				console.log('without changing picture')
+				Users.findByIdAndUpdate({ _id: req.params.id }, req.body, {
+					new: true
+				})
+					.then(data => {
+						res.send(data)
+						console.log(data)
+					})
+					.catch(err => {
+						console.log(err)
+						res.send(err)
+					})
 			}
 		})
 		.catch(err => {
