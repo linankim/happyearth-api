@@ -25,7 +25,6 @@ app.get('/users/:id', require('./controllers/getUser'))
 app.get('/users', require('./controllers/getUsers'))
 
 //routes patch
-
 app.patch(
 	'/users/:id',
 	upload.single('file'),
