@@ -21,6 +21,7 @@ app.delete('/users/:id', require('./controllers/deleteUser'))
 //routes get
 app.get('/amenities', require('./controllers/getAmenities'))
 app.get('/auth', require('./controllers/Auth'))
+app.get('/cities', require('./controllers/getCities'))
 app.get('/spots/:id', require('./controllers/getSpot'))
 app.get('/spots', require('./controllers/getSpots'))
 app.get('/types', require('./controllers/getTypes'))

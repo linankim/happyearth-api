@@ -3,7 +3,7 @@ const Spots = require('../models/spots')
 
 module.exports = (req, res) => {
 	console.log('working!!!!!!!!!')
-	Spots.find({})
+	Spots.find(req.query)
 		.populate('types')
 		.then(spots => {
 			spots.map(spot => {
