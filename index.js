@@ -22,6 +22,7 @@ app.get('/spots/:id', require('./controllers/getSpot'))
 app.get('/spots', require('./controllers/getSpots'))
 app.get('/types', require('./controllers/getTypes'))
 app.get('/users/:id', require('./controllers/getUser'))
+app.get('/cities', require('./controllers/getCities'))
 
 //routes post
 app.post('/login', require('./controllers/Login'))
