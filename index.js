@@ -40,7 +40,7 @@ app.patch('/spots/:id', require('./controllers/patchSpot'))
 
 //routes post
 app.post('/login', require('./controllers/Login'))
-app.post('/signup', upload.single('file'), require('./controllers/Signup'))
+app.post('/signup', upload.single('file'), require('./controllers/signup'))
 app.post('/spots', upload.single('file'), require('./controllers/postSpots'))
 
 //connect server
