@@ -22,8 +22,10 @@ app.delete('/users/:id', require('./controllers/deleteUser'))
 app.get('/amenities', require('./controllers/getAmenities'))
 app.get('/auth', require('./controllers/Auth'))
 app.get('/cities', require('./controllers/getCities'))
+app.get('/eatins', require('./controllers/getEatins'))
 app.get('/spots/:id', require('./controllers/getSpot'))
 app.get('/spots', require('./controllers/getSpots'))
+app.get('/takeaways', require('./controllers/getTakeaways'))
 app.get('/types', require('./controllers/getTypes'))
 app.get('/users/:id', require('./controllers/getUser'))
 app.get('/users', require('./controllers/getUsers'))
@@ -34,6 +36,7 @@ app.patch(
 	upload.single('file'),
 	require('./controllers/patchUser')
 )
+app.patch('/spots/:id', require('./controllers/patchSpot'))
 
 //routes post
 app.post('/login', require('./controllers/Login'))
