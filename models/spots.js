@@ -21,16 +21,16 @@ const Spots = mongoose.model('spots', {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'types'
 	},
-	eatin: [
+	eatins: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'eatin'
+			ref: 'eatins'
 		}
 	],
-	takeaway: [
+	takeaways: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'takeaway'
+			ref: 'takeaways'
 		}
 	],
 	city: {
