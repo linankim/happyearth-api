@@ -1,6 +1,6 @@
 const mongoose = require('../database')
 
-const Takeaway = mongoose.model('takeaway', {
+const Takeaways = mongoose.model('takeaways', {
 	explanation: {
 		type: String,
 		required: [true, 'explanation is required.']
@@ -11,4 +11,4 @@ const Takeaway = mongoose.model('takeaway', {
 	}
 })
 
-module.exports = Takeaway
+module.exports = Takeaways
