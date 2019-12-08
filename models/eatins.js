@@ -1,6 +1,6 @@
 const mongoose = require('../database')
 
-const Eatin = mongoose.model('eatin', {
+const Eatins = mongoose.model('eatins', {
 	explanation: {
 		type: String,
 		required: [true, 'explanation is required.']
@@ -11,4 +11,4 @@ const Eatin = mongoose.model('eatin', {
 	}
 })
 
-module.exports = Eatin
+module.exports = Eatins
