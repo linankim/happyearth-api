@@ -6,7 +6,9 @@ module.exports = (req, res) => {
 		.then(spots => {
 			let spotsCopy = []
 			spots.forEach(spot => {
-				if (spot.city.indexOf(req.query.name) != -1) {
+				if (
+					spot.city.toLowerCase().indexOf(req.query.name.toLowerCase()) != -1
+				) {
 					spotsCopy.push(spot)
 				}
 
@@ -14,8 +16,16 @@ module.exports = (req, res) => {
 				// remove duplicates
 			})
 			if (spotsCopy) {
-				spotsOne = []
+				let spotsOne = []
 				spotsOne.push(spotsCopy[0])
+				spotsCopy.filter(spot => {
+					for (i = 0; i < spotsOne.length; i++) {
+						if (spot.city !== spotsOne[i].city) {
+							spotsOne.push(spot)
+						}
+					}
+				})
+
 				console.log({ spotsOne })
 				res.send(spotsOne)
 			}
