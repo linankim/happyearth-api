@@ -21,12 +21,20 @@ const Spots = mongoose.model('spots', {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'types'
 	},
+	toggleEatins: {
+		type: Boolean,
+		default: false
+	},
 	eatins: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'eatins'
 		}
 	],
+	toggleTakeaways: {
+		type: Boolean,
+		default: false
+	},
 	takeaways: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
