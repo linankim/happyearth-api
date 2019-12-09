@@ -8,6 +8,10 @@ const Eatins = mongoose.model('eatins', {
 	icon: {
 		type: String,
 		required: [true, 'Icon string is required.']
+	},
+	clicked: {
+		type: Boolean,
+		default: false
 	}
 })
 
