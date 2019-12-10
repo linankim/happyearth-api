@@ -16,18 +16,13 @@ module.exports = (req, res) => {
 				// remove duplicates
 			})
 			if (spotsCopy) {
-				let spotsOne = []
-				spotsOne.push(spotsCopy[0])
-				spotsCopy.filter(spot => {
-					for (i = 0; i < spotsOne.length; i++) {
-						if (spot.city !== spotsOne[i].city) {
-							spotsOne.push(spot)
-						}
-					}
-				})
-
-				console.log({ spotsOne })
-				res.send(spotsOne)
+				let cityList = spotsCopy.map(spot => spot.city)
+				let onlyUnique = (value, index, self) => {
+					return self.indexOf(value) === index
+				}
+				let unique = cityList.filter(onlyUnique)
+				console.log({ unique })
+				res.send(unique)
 			}
 		})
 		.catch(err => {
