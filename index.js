@@ -41,7 +41,7 @@ app.patch('/spots/:id', require('./controllers/patchSpot'))
 //routes post
 app.post('/login', require('./controllers/Login'))
 app.post('/signup', upload.single('file'), require('./controllers/signup'))
-app.post('/spots', upload.single('file'), require('./controllers/postSpots'))
+app.post('/spots', upload.array('files'), require('./controllers/postSpots'))
 
 //connect server
 app.listen(process.env.PORT, () => {
