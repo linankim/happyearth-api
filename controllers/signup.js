@@ -43,6 +43,13 @@ module.exports = (req, res) => {
 					})
 				} else {
 					console.log('something')
+					Users.create(req.body)
+						.then(user => {
+							let token = jwt.sign(user.toObject(), process.env.SECRET)
+
+							res.send({ token: token })
+						})
+						.catch(err => res.send(err))
 				}
 			}
 		})
