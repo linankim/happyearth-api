@@ -13,7 +13,6 @@ module.exports = (req, res) => {
 		.then(user => {
 			if (user) {
 				res.send('This email is already in use.')
-				console.log('stop here')
 			} else {
 				req.body.password = bcrypt.hashSync(req.body.password, 10)
 				console.log('encrypted password', req.body.password)
@@ -32,17 +31,21 @@ module.exports = (req, res) => {
 					cloudinary.uploader.upload(uri).then(cloudinaryFile => {
 						console.log({ cloudinaryFile })
 						req.body.avatar = cloudinaryFile.url
-
 						Users.create(req.body)
 							.then(user => {
 								let token = jwt.sign(user.toObject(), process.env.SECRET)
-
 								res.send({ token: token })
 							})
 							.catch(err => res.send(err))
 					})
 				} else {
-					console.log('something')
+					Users.create(req.body)
+						.then(user => {
+							let token = jwt.sign(user.toObject(), process.env.SECRET)
+
+							res.send({ token: token })
+						})
+						.catch(err => res.send(err))
 				}
 			}
 		})
