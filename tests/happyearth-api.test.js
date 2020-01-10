@@ -153,4 +153,17 @@ describe('auth', () => {
 				done()
 			})
 	})
+	it('should login and get token', done => {
+		chai
+			.request(api)
+			.post('/login')
+			.send({
+				email: 'test@test.com',
+				password: 'test'
+			})
+			.end((err, res) => {
+				res.body.should.have.property('token')
+				done()
+			})
+	})
 })
