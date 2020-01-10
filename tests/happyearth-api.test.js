@@ -86,6 +86,22 @@ describe('spots', () => {
 					})
 			})
 	})
+	it('should not create spot', done => {
+		chai
+			.request(api)
+			.post('/spots')
+			.send({
+				images: 'image.jpg',
+				title: 'test2',
+				spotters: '5de38d84392a0925a9053f3a',
+				description: 'description for test',
+				types: '5ddf9709397b993ae31c4367'
+			})
+			.end((err, res) => {
+				res.body.should.not.have.property('_id')
+				done()
+			})
+	})
 })
 
 // describe('auth', () => {
