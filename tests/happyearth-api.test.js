@@ -113,12 +113,21 @@ describe('auth', () => {
 				firstName: 'testUser',
 				lastName: 'User',
 				residenceCountry: 'Test',
-				email: 'testUser@User.com',
+				email: 'testUser1@User.com',
 				password: 'testUser',
 				avatar: 'testUser.jpg'
 			})
 			.end((err, res) => {
 				res.body.should.have.property('token')
+				done()
+			})
+	})
+	it('should delete user', done => {
+		chai
+			.request(api)
+			.delete('/users/5e185d99cd8489134fe82334')
+			.end((err, res) => {
+				res.body.should.not.have.property('_id')
 				done()
 			})
 	})
