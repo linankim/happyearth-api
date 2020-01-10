@@ -166,4 +166,17 @@ describe('auth', () => {
 				done()
 			})
 	})
+	it('should NOT login', done => {
+		chai
+			.request(api)
+			.post('/login')
+			.send({
+				email: 'testUser@User.com',
+				password: 'testUser'
+			})
+			.end((err, res) => {
+				res.body.should.not.have.property('token')
+				done()
+			})
+	})
 })
