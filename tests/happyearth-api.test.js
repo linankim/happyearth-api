@@ -104,20 +104,22 @@ describe('spots', () => {
 	})
 })
 
-// describe('auth', () => {
-// 	it('should sign up and get token', done => {
-// 		chai
-// 			.request(api)
-// 			.post('/signup')
-// 			.send({
-// 				firstName: 'testofauth'
-// 			})
-// 			.end((error, result) => {
-// 				console.log('>>>>> error', { error })
-// 				console.log('result>>>>', { result })
-// 				result.body.should.have.property('token')
-// 				console.log('body', res.body)
-// 			})
-// 		done()
-// 	})
-// })
+describe('auth', () => {
+	it('should sign up and get token', done => {
+		chai
+			.request(api)
+			.post('/signup')
+			.send({
+				firstName: 'testUser',
+				lastName: 'User',
+				residenceCountry: 'Test',
+				email: 'testUser@User.com',
+				password: 'testUser',
+				avatar: 'testUser.jpg'
+			})
+			.end((err, res) => {
+				res.body.should.have.property('token')
+				done()
+			})
+	})
+})
