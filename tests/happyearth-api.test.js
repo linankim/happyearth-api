@@ -105,7 +105,7 @@ describe('spots', () => {
 })
 
 describe('auth', () => {
-	it('should sign up and get token', done => {
+	it('should sign up and get token, decipher token, delete user afterwards', done => {
 		chai
 			.request(api)
 			.post('/signup')
@@ -113,35 +113,28 @@ describe('auth', () => {
 				firstName: 'testUser',
 				lastName: 'User',
 				residenceCountry: 'Test',
-				email: 'testUser2@User.com',
+				email: 'testUser@User.com',
 				password: 'testUser',
 				avatar: 'testUser.jpg'
 			})
 			.end((err, res) => {
 				res.body.should.have.property('token')
-				done()
-			})
-	})
-	it('should delete user', done => {
-		chai
-			.request(api)
-			.delete('/users/5e186060866cee1406d09666')
-			.end((err, res) => {
-				res.body.should.not.have.property('_id')
-				done()
-			})
-	})
-	it('should decipher token', done => {
-		chai
-			.request(api)
-			.get('/auth')
-			.set(
-				'Authorization',
-				'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTE4NjBiOWFjYzQ4YzE0MTJiY2I0ZDEiLCJlbWFpbCI6InRlc3RVc2VyMUBVc2VyLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJHZVTmpVWG14MExDaXhYazZ5YlhPemV2RDBNOC5iQTQxc1lvU2pHT0FjeDNJcmdsN2pyRmIyIiwiaWF0IjoxNTc4NjU2MTg0fQ.hGRCn6BNgmf1S8n_F1ib__dt3XorNNM023pcj8K-oEc'
-			)
-			.end((err, res) => {
-				res.body.should.have.property('_id')
-				done()
+				let token = res.body.token
+				chai
+					.request(api)
+					.get('/auth')
+					.set('Authorization', `Bearer ${token}`)
+					.end((err, res) => {
+						res.body.should.have.property('_id')
+						let id = res.body._id
+						chai
+							.request(api)
+							.delete(`/users/${id}`)
+							.end((err, res) => {
+								res.body.should.not.have.property(`${id}`)
+								done()
+							})
+					})
 			})
 	})
 })
