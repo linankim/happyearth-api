@@ -10,71 +10,82 @@ describe('spots', () => {
 		chai
 			.request(api)
 			.get('/spots')
-			.end((error, result) => {
-				result.body.should.be.a('array')
+			.end((err, res) => {
+				res.body.should.be.a('array')
+				done()
 			})
-		done()
 	})
 	it('should get at least 1 spot', done => {
 		chai
 			.request(api)
 			.get('/spots')
-			.end((error, result) => {
-				result.body.should.have.lengthOf.above(0)
+			.end((err, res) => {
+				res.body.should.have.lengthOf.above(0)
+				done()
 			})
-		done()
 	})
 	it('should return an array of documents', done => {
 		chai
 			.request(api)
 			.get('/spots')
-			.end((error, result) => {
-				result.body.forEach(spot => {
+			.end((err, res) => {
+				res.body.forEach(spot => {
 					spot.should.have.property('_id')
 				})
+				done()
 			})
-		done()
 	})
 	it('should filter spots city', done => {
 		chai
 			.request(api)
 			.get('/spots?city=Lamai')
-			.end((error, result) => {
-				result.body.forEach(spot => {
+			.end((err, res) => {
+				res.body.forEach(spot => {
 					spot.title.should.equal(Lamai)
 				})
+				done()
 			})
-		done()
 	})
 	it('should filter lng', done => {
 		chai
 			.request(api)
 			.get('/spots?lng=22')
-			.end((error, result) => {
-				result.body.forEach(spot => {
+			.end((err, res) => {
+				res.body.forEach(spot => {
 					spot.lng.should.equal(22)
 				})
+				done()
 			})
-		done()
 	})
-	// it('should create spot', done => {
-	// 	chai
-	// 		.request(api)
-	// 		.post('/spots')
-	// 		.send({
-	// 			images: 'image.jpg',
-	// 			title: 'testfromtest',
-	// 			description: 'description for test',
-	// 			city: 'ktown',
-	// 			country: 'USA',
-	// 			lng: 444,
-	// 			lat: 444
-	// 		})
-	// 		.end((error, result) => {
-	// 			result.body.should.have.property('_id')
-	// 		})
-	// 	done()
-	// })
+	it('should create spot and delete it afterwards', done => {
+		chai
+			.request(api)
+			.post('/spots')
+			.send({
+				images: 'image.jpg',
+				title: 'testfromtest',
+				spotters: '5de38d84392a0925a9053f3a',
+				description: 'description for test',
+				types: '5ddf9709397b993ae31c4367',
+				toggleEatins: false,
+				toggleTakeaways: false,
+				city: 'ktown',
+				country: 'USA',
+				lng: 444,
+				lat: 444
+			})
+			.end((err, res) => {
+				res.body.spot.should.have.property('_id')
+				let id = res.body.spot._id
+				chai
+					.request(api)
+					.delete(`/spots/${id}`)
+					.end((err, res) => {
+						res.body.should.not.have.property(`${id}`)
+						done()
+					})
+			})
+	})
 })
 
 // describe('auth', () => {
