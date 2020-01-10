@@ -17,6 +17,7 @@ app.use(cors({ credentials: true }))
 
 //routes delete
 app.delete('/users/:id', require('./controllers/deleteUser'))
+app.delete('/spots/:id', require('./controllers/deleteSpot'))
 
 //routes get
 app.get('/amenities', require('./controllers/getAmenities'))
