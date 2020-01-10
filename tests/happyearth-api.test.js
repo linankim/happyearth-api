@@ -137,4 +137,20 @@ describe('auth', () => {
 					})
 			})
 	})
+	it('should NOT sign up', done => {
+		chai
+			.request(api)
+			.post('/signup')
+			.send({
+				firstName: 'testUser2',
+				lastName: 'User2',
+				residenceCountry: 'Test',
+				password: 'testUser',
+				avatar: 'testUser.jpg'
+			})
+			.end((err, res) => {
+				res.body.should.not.have.property('_id')
+				done()
+			})
+	})
 })
