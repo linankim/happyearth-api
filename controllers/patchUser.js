@@ -4,12 +4,9 @@ const path = require('path')
 const cloudinary = require('cloudinary')
 
 module.exports = (req, res) => {
-	console.log('req.body', req.body)
-	console.log('req.file', req.file)
 	Users.findById({ _id: req.params.id })
 		.then(data => {
 			if (req.file) {
-				console.log('here')
 				cloudinary.config({
 					cloud_name: process.env.CLOUDNAME,
 					api_key: process.env.APIKEY,
@@ -25,14 +22,11 @@ module.exports = (req, res) => {
 					.then(cloudinaryFile => {
 						console.log({ cloudinaryFile })
 						req.body.avatar = cloudinaryFile.url
-						console.log('req.body.avatar', req.body.avatar)
-						console.log(data)
 						Users.findByIdAndUpdate({ _id: req.params.id }, req.body, {
 							new: true
 						})
 							.then(data => {
 								res.send(data)
-								console.log(data)
 							})
 							.catch(err => {
 								console.log(err)
@@ -41,13 +35,11 @@ module.exports = (req, res) => {
 					})
 					.catch(err => res.send(err))
 			} else {
-				console.log('without changing picture')
 				Users.findByIdAndUpdate({ _id: req.params.id }, req.body, {
 					new: true
 				})
 					.then(data => {
 						res.send(data)
-						console.log(data)
 					})
 					.catch(err => {
 						console.log(err)
