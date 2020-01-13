@@ -7,7 +7,7 @@ module.exports = (req, res) => {
 	req.body.center = {}
 	req.body.center.lat = req.body.lat
 	req.body.center.lng = req.body.lng
-	console.log('body', JSON.stringify(req.body, false, 2))
+
 	if (req.files) {
 		console.log('files', req.files)
 		cloudinary.config({
@@ -57,7 +57,6 @@ module.exports = (req, res) => {
 		Spots.create(req.body)
 			.then(spot => {
 				res.send({ spot })
-				console.log({ spot })
 			})
 			.catch(err => res.send(err))
 	}
