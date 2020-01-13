@@ -17,7 +17,6 @@ module.exports = (req, res) => {
 		})
 		const dataUri = new DataUri()
 		uploadFile = file => {
-			console.log('here')
 			return new Promise(function(resolve, reject) {
 				let uri = dataUri.format(
 					path.extname(file.originalname).toString(),
@@ -53,7 +52,6 @@ module.exports = (req, res) => {
 				})
 		})
 	} else {
-		console.log('no file')
 		Spots.create(req.body)
 			.then(spot => {
 				res.send({ spot })
