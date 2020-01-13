@@ -4,8 +4,8 @@ module.exports = (req, res) => {
 	console.log('works')
 	Users.findByIdAndDelete({ _id: req.params.id })
 		.then(data => {
-			res.send(data)
 			console.log(data)
+			res.send(data)
 		})
 		.catch(error => {
 			res.send(error)
